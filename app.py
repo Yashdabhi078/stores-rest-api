@@ -14,9 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False    # SQLAlchemy has modific
 app.secret_key = 'jose'
 api = Api(app)      #it will allow us to add resourse..and every Resource Must be Class
 
-@app.before_first_request   # but it will work little bit slower..copare to sqlite
-def create_tables():
-    db.create_all() #will create all table taht is here or inside the class which is imported
 
 # app.config['JWT_AUTH_URL_RULE'] = '/login'    ## if want to change from '/auth' to 'login' in below/....
 jwt = JWT(app,authenticate,identity)    ## /auth ->> htts://127.0.0.1:5000/auth -> with this request we have to send uid,pwd then it will go inside 'Authorization' and if user found then retern "JWT TOKEN",, which need to send with (Payload) in 'Authentication' header every time when we try to access "@JWT_required()" methods..(get,post..etc..)  
